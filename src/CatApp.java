@@ -22,7 +22,7 @@ public class CatApp {
 			System.out.print("この猫に名前をつけてください>>");
 			String name = new Scanner(System.in).nextLine();
 			// インスタンスを生成、リストに追加
-			Cat cat = new Cat(name,kind);
+			Cat cat = new Cat(name, kind);
 			cats.add(cat);
 			System.out.println(cat.name + "が仲間に加わった!");
 			break;
@@ -31,7 +31,6 @@ public class CatApp {
 			if (cats.size() > 0) {
 				System.out.print("どの猫とあそびますか? >> ");
 				int selectCat = scan.nextInt();
-				cats.
 			} else {
 				System.out.println("遊ぶ猫がいません");
 			}
