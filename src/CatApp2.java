@@ -15,59 +15,67 @@ public class CatApp2 {
 			int select = scan.nextInt();
 			switch (select) {
 			case 1:
-				// 種類をランダムに決める
-				String[] types = { "黒", "白", "茶トラ" };
-				int r = rand.nextInt(types.length);
-				System.out.println(types[r] + "猫を見つけた！");
-
-				// 猫の名前を決める
-				System.out.print("この猫に名前をつけてください>>");
-				String name = new Scanner(System.in).nextLine();
-
-				// 猫を仲間に加える
-				System.out.println(name + "が仲間に加わった!");
-				Cat cat = new Cat(name, types[r]);
+				Cat cat = correct();
 				cats.add(cat);
-
+				System.out.println(cat.name + "が仲間に加わった!");
 				break;
 			case 2:
-				if (cats.size() > 0) {
-					for (int i = 0; i < cats.size(); i++) {
-						System.out.printf("%d・・・%s[%s](%d)\n", i, cats.get(i).name, cats.get(i).type,
-								cats.get(i).intimacy);
-					}
+				if (cats.size() > 0) { // 猫が居る時
+					displayList(cats);
 					System.out.print("どの猫と遊ぶ？ >> ");
 					select = scan.nextInt();
-					System.out.println(cats.get(select).name + "と遊んだ");
-					System.out.println("...");
-					System.out.println(cats.get(select).name + "の親密度がアップした!");
-					cats.get(select).intimacy++;
-				} else {
+					cats.get(select).play();
+				} else { // 猫が居ない時	
 					System.out.println("まだ遊ぶ猫がいません。。。");
 				}
 				break;
 			case 3:
 				System.out.println("***結果***");
 				// 並び替え処理
-				for (int i = 0; i < cats.size() - 1; i++) {
-					for (int j = i + 1; j < cats.size(); j++) {
-						if (cats.get(i).intimacy < cats.get(j).intimacy) {
-							Cat temp = cats.get(i);
-							cats.set(i, cats.get(j));
-							cats.set(j, temp);
-						}
-					}
-				}
+				sortAscendingOrder(cats);
 				// 画面表示
-				for (int i = 0; i < cats.size(); i++) {
-					System.out.printf("%d・・・%s[%s](%d)\n", i, cats.get(i).name, cats.get(i).type, cats.get(i).intimacy);
-				}
+				displayList(cats);
 				System.out.println("また遊んでね。おしまい");
-
 				return;
 			default:
 				System.out.println("選択肢に無い番号です。");
 			}
 		}
+	}
+
+	// 一覧表示
+	public static void displayList(List<Cat> list) {
+		for (int i = 0; i < list.size(); i++) {
+			System.out.printf("%d・・・%s\n", i, list.get(i).showStatus());
+		}
+	}
+
+	// 昇順並び替え
+	public static void sortAscendingOrder(List<Cat> list) {
+		for (int i = 0; i < list.size() - 1; i++) {
+			for (int j = i + 1; j < list.size(); j++) {
+				if (list.get(i).intimacy < list.get(j).intimacy) {
+					Cat temp = list.get(i);
+					list.set(i, list.get(j));
+					list.set(j, temp);
+				}
+			}
+		}
+	}
+
+	// 猫を１匹集める
+	public static Cat correct() {
+		// 種類をランダムに決める
+		String[] types = { "黒", "白", "茶トラ" };
+		int r = new Random().nextInt(types.length);
+		System.out.println(types[r] + "猫を見つけた！");
+
+		// 猫の名前を決める
+		System.out.print("この猫に名前をつけてください>>");
+		String name = new Scanner(System.in).nextLine();
+
+		// 猫を１匹生成する
+		Cat cat = new Cat(name, types[r]);
+		return cat;
 	}
 }

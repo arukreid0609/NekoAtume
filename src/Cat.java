@@ -9,4 +9,17 @@ public class Cat {
 		this.type = type;
 		this.intimacy = 0;
 	}
+
+	// ステータスを返す
+	public String showStatus() {
+		return String.format("%s[%s](%d)", this.name, this.type, this.intimacy);
+	}
+
+	// 遊ぶ
+	public void play() {
+		System.out.println(this.name + "と遊んだ");
+		System.out.println("...");
+		System.out.println(this.name + "の親密度がアップした!");
+		this.intimacy++;
+	}
 }
