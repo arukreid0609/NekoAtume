@@ -1,12 +1,12 @@
 
 public class Cat {
 	String name; // 名前
-	String kind; // 種類
-	int love;// 親密度
+	String type; // 種類
+	int intimacy;// 親密度
 
-	public Cat(String name, String kind) {
+	public Cat(String name, String type) {
 		this.name = name;
-		this.kind = kind;
-		this.love = 0;
+		this.type = type;
+		this.intimacy = 0;
 	}
 }
