@@ -3,6 +3,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
+// リファクタリング後の内容
 public class CatApp2 {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);

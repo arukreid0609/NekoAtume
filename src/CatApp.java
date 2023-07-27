@@ -33,7 +33,8 @@ public class CatApp {
 			case 2:
 				if (cats.size() > 0) {
 					for (int i = 0; i < cats.size(); i++) {
-						System.out.printf("%d・・・%s[%s](%d)\n", i, cats.get(i).name, cats.get(i).type, cats.get(i).intimacy);
+						System.out.printf("%d・・・%s[%s](%d)\n", i, cats.get(i).name, cats.get(i).type,
+								cats.get(i).intimacy);
 					}
 					System.out.print("どの猫と遊ぶ？ >> ");
 					select = scan.nextInt();
